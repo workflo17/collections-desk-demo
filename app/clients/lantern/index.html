@@ -1,0 +1,227 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#16171a" media="(prefers-color-scheme: dark)">
+<title>Lantern Street Bakery · Harbor Studio</title><style>
+:root {
+  --ink: #14161c; --paper: #ffffff; --panel: #f3f3f1; --hair: #dcdcd8; --muted: #5c5c5c; --due: #9c1f1f;
+  --late1: #d8a29c; --late2: #bd5d53; --late3: #9c1f1f; --focus: #1a56c4; --rail: #fafaf8;
+  --serif: Georgia, "Times New Roman", serif; --sans: Arial, Helvetica, sans-serif;
+  --mono: ui-monospace, Consolas, "Courier New", monospace; --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #ecebe7; --paper: #121316; --panel: #1d1f23; --hair: #34363b; --muted: #a6a6a1; --due: #f08a7e;
+    --late1: #8f4b44; --late2: #c4655a; --late3: #f08a7e; --focus: #8ab4ff; --rail: #16171a; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans); }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a, button, input, select, textarea, label, summary { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.skip { position: absolute; left: -999px; top: 0.5rem; background: var(--ink); color: var(--paper); padding: 0.5rem 0.8rem; z-index: 10; }
+.skip:focus { left: 0.5rem; }
+
+.demo { background: var(--ink); color: var(--paper); font-size: 0.85rem; padding: 0.45rem 1rem; text-align: center; }
+.demo a { color: inherit; font-weight: 700; }
+
+.shell { display: grid; grid-template-columns: minmax(0, 1fr); min-height: 100vh; }
+.rail { background: var(--rail); border-bottom: 1px solid var(--hair); padding: 0.9rem 1rem 0; }
+.letterhead { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.letterhead b { font: 700 1.05rem/1.2 var(--sans); letter-spacing: 0.01em; overflow-wrap: anywhere; }
+.nav { display: flex; gap: 0.15rem; overflow-x: auto; margin: 0.6rem -1rem 0; padding: 0 1rem; scrollbar-width: none; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { display: flex; align-items: center; gap: 0.45rem; padding: 0.55rem 0.6rem; text-decoration: none; white-space: nowrap;
+  border-bottom: 3px solid transparent; color: var(--muted); min-height: 2.75rem; }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 700; }
+.count { font: 700 0.72rem/1 var(--mono); background: var(--due); color: var(--paper); padding: 0.2rem 0.38rem; border-radius: 2px; }
+.rail .foot { display: none; }
+@media (min-width: 64rem) {
+  .shell { grid-template-columns: 15rem minmax(0, 1fr); }
+  .rail { border-bottom: 0; border-right: 1px solid var(--hair); padding: 1.6rem 1.1rem; position: sticky; top: 0; height: 100vh;
+    display: flex; flex-direction: column; }
+  .letterhead { display: block; padding-bottom: 0.9rem; border-bottom: 3px solid var(--ink); }
+  .letterhead b { display: block; margin-top: 0.25rem; font-size: 1.15rem; }
+  .nav { flex-direction: column; margin: 0.9rem 0 0; padding: 0; overflow: visible; }
+  .nav a { border-bottom: 0; border-left: 3px solid transparent; padding: 0.45rem 0.6rem; justify-content: space-between; min-height: 2.5rem; }
+  .nav a[aria-current="page"] { border-left-color: var(--ink); }
+  .rail .foot { display: block; margin-top: auto; font-size: 0.8rem; color: var(--muted); }
+}
+
+main { padding: 1.6rem 1rem 4rem; max-width: 64rem; width: 100%; }
+@media (min-width: 64rem) { main { padding: 2.2rem 2.6rem 5rem; } }
+.lbl { font: 0.72rem/1.4 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 clamp(1.9rem, 6vw, 2.6rem)/1.08 var(--serif); margin: 0.25rem 0 0; letter-spacing: -0.01em; text-wrap: balance; overflow-wrap: anywhere; }
+h1.money { font-size: clamp(2.4rem, 10vw, 3.6rem); font-variant-numeric: tabular-nums; }
+h1 .sub { display: block; font: 400 1rem/1.4 var(--sans); color: var(--muted); letter-spacing: 0; margin-top: 0.45rem; }
+h2 { font: 700 1.2rem/1.3 var(--serif); margin: 2.4rem 0 0.6rem; text-wrap: balance; display: flex; align-items: baseline; gap: 0.6rem; }
+h2 .n { font: 700 0.8rem var(--mono); color: var(--muted); }
+h3 { font: 700 1rem/1.3 var(--serif); margin: 1.4rem 0 0.4rem; text-wrap: balance; }
+h2[id], [id].queue, form[id] { scroll-margin-top: 1rem; }
+p { margin: 0.5rem 0; }
+.meta { font: 0.85rem/1.6 var(--mono); color: var(--muted); margin-top: 0.5rem; overflow-wrap: anywhere; }
+.meta b { color: var(--ink); font-weight: 600; }
+.fine { color: var(--muted); font-size: 0.9rem; }
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
+.head > div:first-child { min-width: 0; }
+.head .actions { margin: 0; }
+.mono, .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.due-ink { color: var(--due); }
+
+.rule { border: 0; border-top: 3px solid var(--ink); margin: 1rem 0 1.5rem; }
+.ledger-rule { display: flex; height: 0.5rem; margin: 1.1rem 0 0.55rem; background: var(--hair); }
+.ledger-rule span { display: block; min-width: 3px; transform-origin: left center; animation: grow 0.7s var(--ease-out) both; }
+.ledger-rule span:nth-child(2) { animation-delay: 0.08s; } .ledger-rule span:nth-child(3) { animation-delay: 0.16s; }
+.ledger-rule span:nth-child(4) { animation-delay: 0.24s; }
+.seg-ink { background: var(--ink); } .seg-l1 { background: var(--late1); } .seg-l2 { background: var(--late2); } .seg-l3 { background: var(--late3); }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1.3rem; margin: 0 0 1.6rem; padding: 0; list-style: none; font: 0.82rem/1.5 var(--mono); color: var(--muted); }
+.legend i { display: inline-block; width: 0.7rem; height: 0.7rem; margin-right: 0.4rem; vertical-align: -0.05rem; }
+.legend b { color: var(--ink); font-weight: 600; }
+
+.tag { display: inline-block; font: 700 0.68rem/1.5 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid currentColor;
+  padding: 0 0.35rem; border-radius: 2px; white-space: nowrap; }
+.tag.late { color: var(--due); }
+.tag.paid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tag.draft { border-style: dashed; }
+.tag.quiet { color: var(--muted); }
+
+.queue { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hair); }
+.queue > li { display: grid; grid-template-columns: 1fr; gap: 0.35rem; padding: 0.9rem 0; border-bottom: 1px solid var(--hair); }
+.queue > li > .tag { justify-self: start; }
+.queue .what { min-width: 0; }
+.queue .t { font: 700 1rem/1.4 var(--serif); overflow-wrap: anywhere; }
+.queue .m { font: 0.82rem/1.5 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.queue .go { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+.queue .go form { margin: 0; }
+@media (min-width: 40rem) {
+  .queue > li { grid-template-columns: 6.5rem minmax(0, 1fr) auto; align-items: center; gap: 1rem; }
+}
+.empty { border: 1px dashed var(--hair); padding: 1rem 1.1rem; color: var(--muted); }
+.empty b { color: var(--ink); }
+
+table.ledger { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+table.ledger th { font: 0.7rem/1.4 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left;
+  padding: 0.4rem 0.5rem 0.4rem 0; border-bottom: 1px solid var(--ink); font-weight: 400; }
+table.ledger td { padding: 0.6rem 0.5rem 0.6rem 0; border-bottom: 1px solid var(--hair); vertical-align: top; overflow-wrap: anywhere; }
+table.ledger .r { text-align: right; }
+table.ledger td.num { white-space: nowrap; }
+table.ledger tfoot td { border-bottom: 0; border-top: 3px solid var(--ink); font-weight: 700; }
+@media (max-width: 40rem) {
+  table.ledger.stack thead { position: absolute; left: -999px; }
+  table.ledger.stack tr { display: grid; grid-template-columns: 1fr auto; gap: 0.1rem 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--hair); }
+  table.ledger.stack td { border: 0; padding: 0; }
+  table.ledger.stack td[data-k]::before { content: attr(data-k) " "; font: 0.68rem var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  table.ledger.stack td.first { font-weight: 700; }
+  table.ledger.stack td.r { text-align: right; }
+}
+.filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+.filters a { display: inline-block; padding: 0.4rem 0.7rem; border: 1px solid var(--hair); border-radius: 2px; text-decoration: none; font-size: 0.9rem; min-height: 2.25rem; }
+.filters a[aria-current="page"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.panel { background: var(--panel); padding: 1rem 1.1rem; margin: 1rem 0; }
+.panel dl, dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1.1rem; margin: 0.3rem 0 0; }
+dl.facts dt, .panel dt { font: 0.7rem/1.9 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+dl.facts dd, .panel dd { margin: 0; font: 0.92rem/1.6 var(--mono); overflow-wrap: anywhere; }
+.msg { white-space: pre-wrap; overflow-wrap: anywhere; font: 1rem/1.6 var(--sans); }
+.doc { border: 1px solid var(--hair); padding: 1.2rem 1.3rem; max-height: 32rem; overflow: auto; overflow-wrap: anywhere; }
+.doc h1 { font-size: 1.5rem; } .doc table { width: 100%; border-collapse: collapse; font-size: 0.9rem; display: block; overflow-x: auto; }
+.doc th, .doc td { text-align: left; padding: 0.35rem 0.45rem; border-bottom: 1px solid var(--hair); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem 0.8rem; align-items: center; margin: 1rem 0; }
+.actions form { margin: 0; }
+.btn, button { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; font: 700 0.95rem/1.1 var(--sans);
+  color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 2px; padding: 0.7rem 1.1rem; min-height: 2.75rem;
+  cursor: pointer; text-decoration: none; transition: opacity 0.12s ease-out; }
+.btn:hover, button:hover { opacity: 0.86; text-decoration: none; }
+.btn.quiet, button.quiet { background: transparent; color: var(--ink); border-color: var(--hair); }
+.btn.sm, button.sm { padding: 0.45rem 0.75rem; min-height: 2.25rem; font-size: 0.88rem; }
+button[disabled] { opacity: 0.6; cursor: progress; }
+
+form.form { max-width: 40rem; }
+label { display: block; font-weight: 700; margin: 1rem 0 0.3rem; }
+.hint { display: block; font-weight: 400; color: var(--muted); font-size: 0.88rem; }
+input, select, textarea { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--hair); border-radius: 2px;
+  padding: 0.55rem 0.65rem; width: 100%; min-height: 2.75rem; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+textarea { min-height: 6rem; resize: vertical; }
+.row { display: grid; grid-template-columns: 1fr; gap: 0 0.9rem; }
+@media (min-width: 36rem) { .row { grid-template-columns: 1fr 1fr; } .row.three { grid-template-columns: 2fr 1fr 1fr; } }
+.check { display: flex; gap: 0.6rem; align-items: flex-start; font-weight: 400; }
+.check input { width: 1.2rem; min-height: 1.2rem; height: 1.2rem; margin-top: 0.2rem; flex: none; }
+fieldset { border: 0; padding: 0; margin: 1rem 0 0; min-width: 0; }
+legend { font-weight: 700; padding: 0; }
+.lines-in .row { margin-bottom: 0.4rem; }
+.lines-in label { margin-top: 0.4rem; }
+details.more { margin: 1rem 0; }
+details.more summary { cursor: pointer; font-weight: 700; min-height: 2.25rem; display: flex; align-items: center; }
+
+.flash { border-left: 3px solid var(--ink); background: var(--panel); padding: 0.7rem 0.9rem; margin: 0 0 1.4rem; }
+.refused { border-left: 3px solid var(--due); background: var(--panel); padding: 0.8rem 1rem; margin: 0 0 1.4rem; }
+.refused b { color: var(--due); }
+.refused ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+.refused li { margin: 0.35rem 0; }
+.refused .fix { display: block; font: 0.84rem/1.5 var(--mono); color: var(--muted); }
+.gates { list-style: none; padding: 0; margin: 0.4rem 0 0; font-size: 0.93rem; }
+.gates li { padding: 0.35rem 0; border-bottom: 1px solid var(--hair); overflow-wrap: anywhere; }
+.gates .tag { margin-right: 0.5rem; }
+.steps { padding-left: 1.3rem; }
+.steps li { margin: 0.8rem 0; padding-left: 0.2rem; }
+.steps li::marker { font: 700 0.9rem var(--mono); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media print { .rail, .demo, .actions, form, .skip { display: none !important; } .shell { display: block; } }
+</style><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'"><link rel="icon" href="../../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../showcase.css"><script src="../../../showcase.js" defer></script></head><body><div class="showcase-banner" role="note" data-root="../../../"><p><b>A recorded copy.</b> Collections Desk running Harbor Studio, an invented business. Every page is the desk's own output; buttons here don't change anything.</p><p><a href="../../../tour/01/index.html">Take the tour</a><a href="../../../index.html">Front page</a></p></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell"><header class="rail"><div class="letterhead"><span class="lbl" translate="no">Collections Desk</span><b translate="no">Harbor Studio</b></div>
+<nav class="nav" aria-label="Desk"><a href="../../index.html"><span>Today</span><span class="count" aria-label="5 waiting">5</span></a><a href="../../invoices/index.html"><span>Invoices</span></a><a href="../index.html" aria-current="page"><span>Clients</span></a><a href="../../agreements/index.html"><span>Agreements</span></a><a href="../../payments/index.html"><span>Payments</span><span class="count" aria-label="2 waiting">2</span></a><a href="../../reminders/index.html"><span>Reminders</span><span class="count" aria-label="3 waiting">3</span></a><a href="../../letters/index.html"><span>Letters</span></a><a href="../../reports/index.html"><span>Reports</span></a><a href="../../settings/index.html"><span>Settings</span></a></nav>
+<div class="foot"><p>Signed in as a demo visitor. Nothing here sends a message for you.</p>
+<form method="get" action="#" data-showcase-form="/logout"><button type="submit" class="quiet sm">Log out</button></form></div></header>
+<main id="main"><div class="head"><div><div class="lbl">Client · commercial</div><h1>Lantern Street Bakery<span class="sub"><span class="due-ink">$1,200.00 owed</span></span></h1>
+</div><div class="actions"><a class="btn quiet" href="../../files/statement/lantern.pdf" target="_blank" rel="noopener">Statement PDF</a><a class="btn" href="../../agreements/new/index--client-lantern.html">New agreement</a></div></div>
+<hr class="rule">
+<dl class="facts"><dt>Contact</dt><dd>Priya Example</dd><dt>Email</dt><dd>priya@lanternbakery.example</dd>
+<dt>Address</dt><dd>212 Example Street, Brooklyn, NY 11201</dd><dt>Time zone</dt><dd>yours</dd>
+<dt>Send check</dt><dd>lantern</dd></dl>
+<h2>Invoices <span class="n">2</span></h2>
+<table class="ledger stack"><thead><tr><th>Invoice</th><th>For</th><th>Due</th><th class="r">Total</th><th class="r">Owed</th></tr></thead><tbody><tr>
+<td class="first"><a href="../../invoices/0001/index.html">0001</a></td><td data-k="">Holiday menu photographs</td><td data-k="Due" class="num">2026-08-07</td>
+<td data-k="Total" class="num r">$600.00</td><td data-k="Owed" class="num r">$0.00</td></tr><tr>
+<td class="first"><a href="../../invoices/0006/index.html">0006</a></td><td data-k="">Storefront and product photographs</td><td data-k="Due" class="num">2026-10-06</td>
+<td data-k="Total" class="num r">$1,200.00</td><td data-k="Owed" class="num r">$1,200.00</td></tr></tbody></table>
+<h2>Agreements <span class="n">2</span></h2>
+<ul class="queue"><li><span class="tag paid">Signed</span><div class="what"><div class="t"><a href="../../agreements/A-0001/index.html">A-0001 · Holiday menu photographs</a></div><div class="m">$600.00 · from 2026-07-13</div></div><div class="go"></div></li><li><span class="tag paid">Signed</span><div class="what"><div class="t"><a href="../../agreements/A-0006/index.html">A-0006 · Storefront and product photographs</a></div><div class="m">$1,200.00 · from 2026-09-13</div></div><div class="go"></div></li></ul>
+<h2>Payments <span class="n">1</span></h2>
+<ul class="queue"><li><span class="tag quiet">Venmo</span><div class="what"><div class="t">$600.00 on 29 July 2026</div><div class="m">to 0001</div></div><div class="go"></div></li></ul>
+<h2>Consent to be contacted</h2>
+<p class="fine">A signed agreement covers email. A text message needs consent on record, given in writing or on a form.</p>
+
+<form method="get" action="#" data-showcase-form="/app/clients/lantern/consent" class="form">
+<div class="row"><div><label for="f-channel">Channel</label>
+<select id="f-channel" name="channel"><option value="email" selected>Email</option><option value="sms">Text message</option></select></div>
+<div><label for="f-address">Email or mobile number</label>
+<input id="f-address" name="address" type="text" value="" required autocomplete="off" spellcheck="false"></div></div>
+<div class="row"><div><label for="f-how">How they agreed</label>
+<select id="f-how" name="how"><option value="written" selected>In writing</option><option value="form">On a form</option><option value="agreement">In the agreement</option><option value="verbal">Out loud</option></select></div>
+<div><label for="f-evidence">Where it is on record <span class="hint">For example: email of 2 October</span></label>
+<input id="f-evidence" name="evidence" type="text" value="" required autocomplete="off"></div></div>
+<div class="actions"><button type="submit" class="quiet">Record consent</button></div></form>
+<h2>Details</h2>
+<details class="more"><summary>Change Lantern Street Bakery's details</summary>
+<form method="get" action="#" data-showcase-form="/app/clients/lantern" class="form"><label for="f-name">Business or person&#39;s name</label>
+<input id="f-name" name="name" type="text" value="Lantern Street Bakery" required autocomplete="off" maxlength="120">
+<div class="row"><div><label for="f-contact_name">Contact <span class="hint">Reminders greet them by first name.</span></label>
+<input id="f-contact_name" name="contact_name" type="text" value="Priya Example" autocomplete="off" maxlength="120"></div>
+<div><label for="f-email">Email</label>
+<input id="f-email" name="email" type="email" value="priya@lanternbakery.example" autocomplete="off" spellcheck="false"></div></div>
+<label for="f-mailing_address">Mailing address <span class="hint">Goes on the agreement; the ZIP code decides which small-claims court applies.</span></label>
+<textarea id="f-mailing_address" name="mailing_address" rows="2" autocomplete="off">212 Example Street, Brooklyn, NY 11201</textarea>
+<label for="f-kind">Who they are <span class="hint">The desk collects from businesses. A consumer gets stricter rules or a refusal.</span></label>
+<select id="f-kind" name="kind"><option value="commercial" selected>A business (commercial)</option><option value="consumer">A person, for personal use (consumer)</option></select>
+<details class="more"><summary>More</summary>
+<label for="f-timezone">Their time zone <span class="hint">For quiet hours, such as America/Los_Angeles. Empty means yours.</span></label>
+<input id="f-timezone" name="timezone" type="text" value="" autocomplete="off" spellcheck="false">
+<label for="f-presend_key">Send-check name <span class="hint">The name your send check knows this client by.</span></label>
+<input id="f-presend_key" name="presend_key" type="text" value="lantern" autocomplete="off" spellcheck="false">
+</details><div class="actions"><button type="submit">Save details</button></div></form></details></main></div></body></html>

@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<title>Invoice 0007 from Harbor Studio</title><style>
+:root { --ink: #14161c; --paper: #ffffff; --muted: #5c5c5c; --rule: #111111; --hair: #dcdcd8; --panel: #f3f3f1;
+  --due: #9c1f1f; --focus: #1a56c4; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #ecebe7; --paper: #121316; --muted: #a6a6a1; --rule: #ecebe7; --hair: #34363b; --panel: #1d1f23;
+    --due: #f08a7e; --focus: #8ab4ff; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 Arial, Helvetica, sans-serif; }
+main { max-width: 40rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+.lbl { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.brand { font-weight: 700; letter-spacing: 0.02em; }
+h1 { font: 700 clamp(2rem, 8vw, 2.6rem)/1.05 Georgia, "Times New Roman", serif; margin: 0.2rem 0 0; letter-spacing: -0.01em;
+  text-wrap: balance; }
+h2 { font: 700 1.15rem/1.3 Georgia, "Times New Roman", serif; margin: 1.8rem 0 0.4rem; text-wrap: balance; }
+.meta { font: 0.85rem/1.6 ui-monospace, Consolas, "Courier New", monospace; color: var(--muted); margin-top: 0.5rem; }
+.meta b { color: var(--ink); font-weight: 600; }
+.rule { border: 0; border-top: 3px solid var(--rule); margin: 1rem 0 1.5rem; }
+.due { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.due .amount { font: 700 clamp(2.2rem, 11vw, 3.2rem)/1 Georgia, "Times New Roman", serif; color: var(--due);
+  font-variant-numeric: tabular-nums; }
+.due .when { color: var(--muted); }
+.paid-note { margin: 0.6rem 0 0; font-weight: 700; }
+.lines { list-style: none; padding: 0; margin: 1.5rem 0 0; border-top: 1px solid var(--hair); }
+.lines li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--hair); }
+.lines li > div:first-child { min-width: 0; }
+.lines .t { font-family: Georgia, "Times New Roman", serif; font-weight: 700; overflow-wrap: anywhere; }
+.lines .m { font: 0.8rem ui-monospace, Consolas, monospace; color: var(--muted); }
+.lines .a { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.panel { background: var(--panel); padding: 1rem 1.1rem; margin-top: 1.5rem; }
+.panel dl { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; margin: 0.5rem 0 0; }
+.panel dt { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 0.2rem; }
+.panel dd { margin: 0; font: 0.95rem/1.5 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; user-select: all; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a, button, input, select, textarea, label { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+#signed { scroll-margin-top: 1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; margin-top: 1rem; }
+form { margin-top: 0.5rem; }
+label { display: block; font-weight: 700; margin: 1rem 0 0.3rem; }
+.hint { display: block; font-weight: 400; color: var(--muted); font-size: 0.9rem; }
+input, select, textarea { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--hair);
+  border-radius: 2px; padding: 0.6rem 0.7rem; width: 100%; min-height: 2.75rem; }
+textarea { min-height: 5rem; resize: vertical; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 0.9rem; }
+@media (max-width: 30rem) { .row { grid-template-columns: 1fr; } }
+button { font: 700 1rem/1 Arial, Helvetica, sans-serif; color: var(--paper); background: var(--ink); border: 0; border-radius: 2px;
+  padding: 0.9rem 1.4rem; min-height: 2.75rem; cursor: pointer; margin-top: 1.25rem; }
+button:hover { opacity: 0.88; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.agreement { overflow-wrap: anywhere; }
+.agreement h1 { font-size: clamp(1.6rem, 6vw, 2rem); }
+.agreement table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; font-size: 0.95rem; display: block; overflow-x: auto; }
+.agreement th, .agreement td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--hair); vertical-align: top; }
+.agreement th { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.agreement .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sign { border-top: 3px solid var(--rule); margin-top: 2rem; padding-top: 0.5rem; }
+.signature { font: italic 1.9rem/1.2 Georgia, "Times New Roman", serif; border: 0; border-bottom: 2px solid var(--ink);
+  border-radius: 0; padding: 0.4rem 0.1rem; background: transparent; min-height: 3.25rem; }
+.under { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 0.35rem;
+  font: 0.8rem ui-monospace, Consolas, monospace; color: var(--muted); }
+.consent { display: flex; gap: 0.6rem; align-items: flex-start; font-weight: 400; margin-top: 1.25rem; }
+.consent input { width: 1.25rem; min-height: 1.25rem; height: 1.25rem; margin-top: 0.15rem; flex: none; }
+.fine { color: var(--muted); font-size: 0.9rem; margin-top: 1rem; }
+.notice { border-left: 3px solid var(--rule); padding: 0.2rem 0 0.2rem 0.9rem; margin: 1rem 0; }
+.error { border-left-color: var(--due); }
+.msg { white-space: pre-wrap; overflow-wrap: anywhere; font: 1rem/1.55 Arial, Helvetica, sans-serif; margin: 0.6rem 0 0; }
+.gates { list-style: none; padding: 0; margin: 0.5rem 0 0; font-size: 0.95rem; }
+.gates li { padding: 0.3rem 0; border-bottom: 1px solid var(--hair); overflow-wrap: anywhere; }
+.gates .tag { font: 700 0.72rem ui-monospace, Consolas, monospace; letter-spacing: 0.08em; margin-right: 0.5rem; }
+.gates .no { color: var(--due); }
+button.quiet { background: transparent; color: var(--ink); border: 1px solid var(--hair); }
+.lines form { margin-top: 0.4rem; }
+.lines .actions form { margin: 0; }
+@media print { .noprint { display: none; } }
+</style><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'"><link rel="icon" href="../../../../../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../../../../showcase.css"><script src="../../../../../../showcase.js" defer></script></head><body><div class="showcase-banner" role="note" data-root="../../../../../../"><p><b>A recorded copy.</b> Collections Desk running Harbor Studio, an invented business. Every page is the desk's own output; buttons here don't change anything.</p><p><a href="../../../../../../tour/01/index.html">Take the tour</a><a href="../../../../../../index.html">Front page</a></p></div><main>
+<div class="lbl brand">Harbor Studio</div>
+<h1>Invoice 0007</h1>
+<div class="meta">Issued <b>29 September 2026</b> · <b>Due 14 October 2026</b> · To <b translate="no">Copper Kettle Catering</b></div>
+<hr class="rule">
+
+<div class="due"><span class="lbl">Balance</span><span class="amount">$0.00</span></div>
+<p class="paid-note">Paid in full. Thank you.</p>
+<ul class="lines"><li><div><div class="t">Menu design, two pages, print and web files</div></div><div class="a">$650.00</div></li></ul>
+
+<div class="actions noprint"></div>
+</main></body></html>

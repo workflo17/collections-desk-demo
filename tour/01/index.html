@@ -1,0 +1,99 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin"><meta name="description" content="Collections Desk writes the agreement, issues the invoice, reminds the client in your words, notices Zelle and Venmo payments, and drafts the demand letter. Nothing goes out without your approval.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<title>Collections Desk: get paid for the work you already did</title><style>
+:root { --ink: #14161c; --paper: #ffffff; --panel: #f3f3f1; --hair: #dcdcd8; --muted: #5c5c5c; --due: #9c1f1f;
+  --late1: #d8a29c; --late2: #bd5d53; --late3: #9c1f1f; --focus: #1a56c4;
+  --serif: Georgia, "Times New Roman", serif; --sans: Arial, Helvetica, sans-serif; --mono: ui-monospace, Consolas, "Courier New", monospace;
+  color-scheme: light dark; }
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #ecebe7; --paper: #121316; --panel: #1d1f23; --hair: #34363b; --muted: #a6a6a1; --due: #f08a7e;
+    --late1: #8f4b44; --late2: #c4655a; --late3: #f08a7e; --focus: #8ab4ff; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a, button, input, label { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.1rem; }
+.skip { position: absolute; left: -999px; top: 0.5rem; background: var(--ink); color: var(--paper); padding: 0.5rem 0.8rem; z-index: 10; }
+.skip:focus { left: 0.5rem; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 0; border-bottom: 3px solid var(--ink); }
+.mark { font: 700 0.85rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; }
+.lbl { font: 0.74rem/1.4 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 clamp(2.4rem, 7.5vw, 4.4rem)/1.02 var(--serif); letter-spacing: -0.02em; margin: 0.5rem 0 0; text-wrap: balance; }
+h2 { font: 700 clamp(1.5rem, 4vw, 2rem)/1.15 var(--serif); margin: 0 0 1rem; text-wrap: balance; }
+h3 { font: 700 1.1rem/1.3 var(--serif); margin: 0; text-wrap: balance; }
+p { margin: 0.6rem 0; }
+.lede { font-size: clamp(1.05rem, 2.4vw, 1.25rem); max-width: 40rem; color: var(--ink); margin-top: 1.1rem; }
+.hero { padding: clamp(2rem, 7vw, 4.5rem) 0 2.5rem; }
+.ledger { margin: 2.4rem 0 0; max-width: 46rem; }
+.ledger .fig { font: 700 clamp(2.6rem, 9vw, 4rem)/1 var(--serif); font-variant-numeric: tabular-nums; }
+.ledger .fig small { font: 400 1rem var(--sans); color: var(--muted); margin-left: 0.6rem; letter-spacing: 0; }
+.bar { display: flex; height: 0.6rem; margin: 0.9rem 0 0.6rem; background: var(--hair); }
+.bar span { display: block; transform-origin: left center; animation: grow 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.bar span:nth-child(2) { animation-delay: 0.1s; } .bar span:nth-child(3) { animation-delay: 0.2s; }
+.s0 { background: var(--ink); } .s1 { background: var(--late1); } .s2 { background: var(--late2); } .s3 { background: var(--late3); }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1.3rem; list-style: none; margin: 0; padding: 0; font: 0.85rem/1.5 var(--mono); color: var(--muted); }
+.legend i { display: inline-block; width: 0.7rem; height: 0.7rem; margin-right: 0.4rem; vertical-align: -0.05rem; }
+.legend b { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; margin: 2rem 0 0.6rem; }
+.cta form { margin: 0; }
+.btn, button { display: inline-flex; align-items: center; justify-content: center; font: 700 1rem/1.1 var(--sans); color: var(--paper); background: var(--ink);
+  border: 1px solid var(--ink); border-radius: 2px; padding: 0.85rem 1.3rem; min-height: 3rem; cursor: pointer; text-decoration: none; transition: opacity 0.12s ease-out; }
+.btn:hover, button:hover { opacity: 0.86; text-decoration: none; }
+.btn.quiet { background: transparent; color: var(--ink); border-color: var(--ink); }
+.fine { color: var(--muted); font-size: 0.92rem; }
+section.band { border-top: 1px solid var(--hair); padding: 2.6rem 0; }
+ol.how { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 0; }
+ol.how li { counter-increment: step; display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0 1rem; padding: 1rem 0; border-top: 1px solid var(--hair); }
+ol.how li::before { content: counter(step); font: 700 1.6rem/1 var(--serif); color: var(--muted); }
+ol.how li p { margin: 0.25rem 0 0; color: var(--muted); }
+.never { background: var(--panel); padding: 1.3rem 1.4rem; }
+.never ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+.never li { margin: 0.45rem 0; }
+.foot { border-top: 3px solid var(--ink); padding: 1.4rem 0 3rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+form.auth { max-width: 26rem; margin: 2rem 0 4rem; }
+label { display: block; font-weight: 700; margin: 1.1rem 0 0.3rem; }
+.hint { display: block; font-weight: 400; color: var(--muted); font-size: 0.88rem; }
+input { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--hair); border-radius: 2px; padding: 0.6rem 0.7rem; width: 100%; min-height: 2.9rem; }
+.error { border-left: 3px solid var(--due); background: var(--panel); padding: 0.7rem 0.9rem; margin: 1rem 0; }
+@media (min-width: 48rem) { .two { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'"><link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../showcase.css"><script src="../../showcase.js" defer></script></head><body><div class="showcase-banner" role="note" data-root="../../"><p><b>A recorded copy.</b> Collections Desk running Harbor Studio, an invented business. Every page is the desk's own output; buttons here don't change anything.</p><p><a href="../../tour/01/index.html">Take the tour</a><a href="../../index.html">Front page</a></p></div><a class="skip" href="#main">Skip to content</a><div class="wrap"><header class="top"><a class="mark" href="../../index.html" translate="no">Collections Desk</a>
+<nav aria-label="Account"><a href="#" data-showcase-missing="/login">Sign in</a></nav></header>
+<main id="main">
+<section class="hero">
+<div class="lbl">For freelancers and small studios in New York</div>
+<h1>Get paid for the work you already did.</h1>
+<p class="lede">Collections Desk puts your terms in writing, issues the invoice, reminds the client in your words, catches the Zelle or Venmo payment when it lands, and drafts the demand letter when it doesn't. Nothing goes out without your name on it.</p>
+<div class="ledger" role="img" aria-label="Example: $4,980.00 owed to you, of which $2,050.00 is 1 to 30 days late">
+<div class="fig">$4,980.00<small>owed to you</small></div>
+<div class="bar"><span class="s0" style="flex-grow:293000"></span><span class="s1" style="flex-grow:205000"></span></div>
+<ul class="legend"><li><i class="s0"></i>Not yet due <b>$2,930.00</b></li><li><i class="s1"></i>1 to 30 days late <b>$2,050.00</b></li></ul>
+</div>
+<div class="cta"><form method="get" action="#" data-showcase-form="/demo" data-tour-target><button type="submit">Try the live demo</button></form><a class="btn quiet" href="#" data-showcase-missing="/signup">Start your desk</a></div>
+<p class="fine">The demo is a made-up photography studio with six clients. This copy was recorded on the day it was built, and nothing in it is sent.</p>
+</section>
+<section class="band"><h2>How the desk works</h2>
+<ol class="how">
+<li><div><h3>Terms in writing first</h3><p>The desk writes the agreement from the job, checks it against New York's freelance law, and gives the client a page to sign. No invoice goes out without one.</p></div></li>
+<li><div><h3>The invoice</h3><p>Issued on the signed agreement at the amounts it allows, as a PDF and a page the client can pay from.</p></div></li>
+<li><div><h3>Reminders in your words</h3><p>Before the due date, on it, then three, seven and fourteen days late. Each one waits for your approval, and a reply from the client stops them until you have read it.</p></div></li>
+<li><div><h3>The payment, noticed</h3><p>Zelle, Venmo, PayPal and Cash App emails are read for the amount and the invoice number. You confirm once you see the money in your app.</p></div></li>
+<li><div><h3>A letter, if it comes to that</h3><p>The late interest your agreement allows, a demand letter that cites the law, then a small-claims packet. You approve, send and file each one yourself.</p></div></li>
+</ol></section>
+<section class="band two"><div><h2>What it will not do</h2></div>
+<div class="never"><ul>
+<li>Send anything for you. You read every reminder and letter and send it from your own address.</li>
+<li>Count money because an email says it arrived. Fake payment emails are a common scam.</li>
+<li>Invent a fee. Late interest comes only from the agreement you both signed, under the state's cap.</li>
+</ul></div></section>
+<section class="band"><h2>See it with real-looking work in it</h2>
+<p>The demo opens a studio with ninety days of invoices: a Zelle payment to confirm, a client who wrote back, a reminder due today and an invoice thirty days late.</p>
+<div class="cta"><form method="get" action="#" data-showcase-form="/demo"><button type="submit">Open the demo</button></form><a class="btn quiet" href="#" data-showcase-missing="/signup">Start your desk</a></div></section>
+</main>
+<footer class="foot"><span class="fine">Collections Desk is made by WorkfloHQ. Early access.</span><span class="fine"><a href="#" data-showcase-missing="/login">Sign in</a></span></footer></div><script type="application/json" id="showcase-tour">{"n":1,"total":22,"title":"The front page","text":"A business owner lands here. The demo button opens a desk of their own, already full of work: Harbor Studio, an invented photography studio in Queens.","act":"submit","fill":{},"next":"../02/index.html","back":null,"end":"../../app/index.html"}</script></body></html>

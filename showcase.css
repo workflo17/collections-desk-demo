@@ -1,0 +1,127 @@
+/* The showcase's own layer over the desk's pages: the recorded-copy banner, the tour panel, the ring
+   around the control a step is about, and the note a button answers with. The desk's red and type. */
+:root {
+  --sc-red: #9c1f1f;
+  --sc-ring: #c98a00;
+  --sc-paper: #fffefb;
+  --sc-ink: #1a1a1a;
+  --sc-muted: #5c5a55;
+  --sc-line: #dcd9d2;
+  --sc-band: #1d1f24;
+  --sc-band-ink: #f4f2ec;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sc-red: #e06a5c;
+    --sc-ring: #f0b429;
+    --sc-paper: #202227;
+    --sc-ink: #ecebe6;
+    --sc-muted: #a9a79f;
+    --sc-line: #3a3d44;
+    --sc-band: #2b2e35;
+    --sc-band-ink: #f4f2ec;
+  }
+}
+
+.showcase-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 9px 16px;
+  background: var(--sc-band);
+  color: var(--sc-band-ink);
+  font: 14px/1.45 Arial, Helvetica, sans-serif;
+}
+.showcase-banner p { margin: 0; }
+.showcase-banner a {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-right: 16px;
+}
+.showcase-banner a:last-child { margin-right: 0; }
+.showcase-banner a:focus-visible { outline: 2px solid var(--sc-ring); outline-offset: 2px; }
+
+.tour-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  width: min(380px, calc(100vw - 40px));
+  padding: 0 18px 14px;
+  background: var(--sc-paper);
+  color: var(--sc-ink);
+  border: 1px solid var(--sc-line);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+}
+.tour-bar { height: 4px; margin: 0 -18px 12px; background: var(--sc-line); }
+.tour-bar i { display: block; height: 100%; background: var(--sc-red); }
+.tour-count {
+  margin: 0;
+  color: var(--sc-muted);
+  font: 12px/1.4 ui-monospace, Consolas, "Courier New", monospace;
+  letter-spacing: 0.04em;
+}
+.tour-panel h2 { margin: 4px 0 6px; font: 600 20px/1.25 Georgia, "Times New Roman", serif; }
+.tour-text { margin: 0 0 14px; }
+.tour-row { display: flex; gap: 8px; align-items: center; }
+.tour-row button {
+  padding: 8px 16px;
+  border: 1px solid var(--sc-ink);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--sc-ink);
+  font: bold 15px/1.2 Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tour-row button.tour-next { background: var(--sc-red); border-color: var(--sc-red); color: #fff; }
+.tour-row button:disabled { opacity: 0.7; cursor: progress; }
+.tour-row button:focus-visible, .tour-leave:focus-visible { outline: 3px solid var(--sc-ring); outline-offset: 2px; }
+.tour-leave { margin-left: auto; color: var(--sc-muted); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+
+.tour-ring {
+  outline: 3px solid var(--sc-ring) !important;
+  outline-offset: 4px;
+  border-radius: 3px;
+  animation: tour-pulse 1.8s ease-in-out infinite;
+}
+.tour-press { transform: scale(0.96); filter: brightness(0.88); transition: transform 0.12s ease-out, filter 0.12s ease-out; }
+@keyframes tour-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 138, 0, 0.45); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 138, 0, 0); }
+}
+
+.showcase-toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  z-index: 1001;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 10px 16px;
+  background: var(--sc-band);
+  color: var(--sc-band-ink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font: 14px/1.45 Arial, Helvetica, sans-serif;
+}
+.showcase-toast a { color: inherit; font-weight: bold; text-underline-offset: 3px; }
+.showcase-toast[hidden] { display: none; }
+
+/* room under the page so the panel never hides its last lines; on main, so the desk's side rail runs the full height */
+html.showcase-touring main { padding-bottom: 260px; }
+@media (max-width: 640px) {
+  .tour-panel { left: 8px; right: 8px; bottom: 8px; width: auto; padding: 0 14px 12px; font-size: 14px; }
+  .tour-bar { margin: 0 -14px 10px; }
+  .tour-panel h2 { font-size: 18px; }
+  html.showcase-touring main { padding-bottom: 320px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-ring { animation: none; }
+  .tour-press { transition: none; }
+}
